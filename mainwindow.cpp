@@ -15,6 +15,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNowy_triggered()
 {
-    mhWindow = new ModifyHotelWindow;
+    mhWindow = new ModifyHotelWindow(this->hotel);
     mhWindow->show();
 }

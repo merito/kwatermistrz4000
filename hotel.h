@@ -9,6 +9,12 @@ class Hotel
 public:
     Hotel();
     ~Hotel();
+    int getFloorsNumber() const;
+    void setFloorsNumber(int value);
+
+    QString getName() const;
+    void setName(const QString &value);
+
 private:
     QString name;
     int floorsNumber;

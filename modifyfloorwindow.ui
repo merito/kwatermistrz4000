@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ModifyHotelWindow</class>
- <widget class="QDialog" name="ModifyHotelWindow">
+ <class>modifyfloorwindow</class>
+ <widget class="QDialog" name="modifyfloorwindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>407</width>
-    <height>355</height>
+    <width>400</width>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>320</y>
+     <x>50</x>
+     <y>480</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -33,48 +33,34 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
-     <width>391</width>
-     <height>231</height>
+     <y>10</y>
+     <width>381</width>
+     <height>31</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
-    <property name="fieldGrowthPolicy">
-     <enum>QFormLayout::ExpandingFieldsGrow</enum>
-    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Liczba pokoi na piętrze</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
    </layout>
   </widget>
   <widget class="QWidget" name="formLayoutWidget_2">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
-     <width>391</width>
-     <height>61</height>
+     <y>50</y>
+     <width>381</width>
+     <height>421</height>
     </rect>
    </property>
-   <layout class="QFormLayout" name="formLayout_2">
-    <item row="1" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Liczba pięter w ośrodku</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Nazwa ośrodka</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_2"/>
-    </item>
-   </layout>
+   <layout class="QFormLayout" name="formLayout_2"/>
   </widget>
  </widget>
  <resources/>
@@ -82,7 +68,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>ModifyHotelWindow</receiver>
+   <receiver>modifyfloorwindow</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -98,7 +84,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>ModifyHotelWindow</receiver>
+   <receiver>modifyfloorwindow</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
