@@ -2,6 +2,12 @@
 #define ROOMBUTTON_H
 
 #include <QWidget>
+#include "room.h"
+#include "ui_roombutton.h"
+
+namespace Ui {
+class RoomButton;
+}
 
 class RoomButton : public QWidget
 {
@@ -13,6 +19,12 @@ public:
 signals:
 
 public slots:
+
+private slots:
+
+private:
+    Ui::RoomButton *ui;
+    QComboBox *keyComboBox = new QComboBox;
 };
 
 #endif // ROOMBUTTON_H

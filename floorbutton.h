@@ -2,6 +2,11 @@
 #define FLOORBUTTON_H
 
 #include <QWidget>
+#include "ui_floorbutton.h"
+
+namespace Ui {
+class FloorButton;
+}
 
 class FloorButton : public QWidget
 {
@@ -13,6 +18,11 @@ public:
 signals:
 
 public slots:
+
+private slots:
+
+private:
+    Ui::FloorButton *ui;
 };
 
 #endif // FLOORBUTTON_H

@@ -12,3 +12,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_actionNowy_triggered()
+{
+    mhWindow = new ModifyHotelWindow;
+    mhWindow->show();
+}

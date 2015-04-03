@@ -11,10 +11,29 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = kwatermistrz4000
 TEMPLATE = app
 
+CONFIG += c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    modifyhotelwindow.cpp \
+    person.cpp \
+    room.cpp \
+    roombutton.cpp \
+    floorbutton.cpp \
+    floor.cpp \
+    hotel.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    modifyhotelwindow.h \
+    person.h \
+    room.h \
+    roombutton.h \
+    floorbutton.h \
+    floor.h \
+    hotel.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    modifyhotelwindow.ui \
+
+RESOURCES += \
+    icons.qrc

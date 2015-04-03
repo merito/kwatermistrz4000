@@ -1,2 +1,10 @@
-<RCC/>
-
+<RCC>
+    <qresource>
+        <file>resources/GUEST.gif</file>
+        <file>resources/HOTEL_OWNED.gif</file>
+        <file>resources/LOST.gif</file>
+        <file>resources/NO_KEY.gif</file>
+        <file>resources/ON_DESK.gif</file>
+        <file>resources/STUFF.gif</file>
+    </qresource>
+</RCC>
