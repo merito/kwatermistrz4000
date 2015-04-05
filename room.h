@@ -13,6 +13,21 @@ class Room
 public:
     Room();
     ~Room();
+    QString getName() const;
+    void setName(const QString &value);
+
+    int getFreePlaces() const;
+    void setFreePlaces(int value);
+
+    int getOccupiedPlaces() const;
+    void setOccupiedPlaces(int value);
+
+    Person *getKeyOwner() const;
+    void setKeyOwner(Person *value);
+
+    QList<Person> getGuests() const;
+    void setGuests(const QList<Person> &value);
+
 private:
     QString name;
     int freePlaces;

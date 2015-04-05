@@ -17,19 +17,16 @@ class ModifyHotelWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit ModifyHotelWindow(Hotel *hotel, QWidget *parent = 0);
+    explicit ModifyHotelWindow(QWidget *parent = 0);
     ~ModifyHotelWindow();
 
 private slots:
     void on_buttonBox_accepted();
-
     void on_lineEdit_textChanged(const QString &arg1);
-
     void on_lineEdit_2_textChanged(const QString &arg1);
 
 private:
     Ui::ModifyHotelWindow *ui;
-    Hotel *hotel;
     int floors;
     QString name;
     QLabel *labelsNames, *labelsRooms;

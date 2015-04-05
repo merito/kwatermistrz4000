@@ -7,15 +7,19 @@
 class Hotel
 {
 public:
-    Hotel();
-    ~Hotel();
+    static Hotel& getInstance();
     int getFloorsNumber() const;
     void setFloorsNumber(int value);
 
     QString getName() const;
     void setName(const QString &value);
 
+    QList<Floor>* getFloors();
+
 private:
+    Hotel();
+    ~Hotel();
+
     QString name;
     int floorsNumber;
     QList<Floor> floors;

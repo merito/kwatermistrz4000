@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QFormLayout>
+#include "hotel.h"
+#include "room.h"
 
 namespace Ui {
 class modifyfloorwindow;
@@ -15,11 +17,15 @@ class modifyfloorwindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit modifyfloorwindow(QWidget *parent = 0);
+    explicit modifyfloorwindow(int number, QWidget *parent = 0);
     ~modifyfloorwindow();
 
+    int getRooms() const;
+    void setRooms(int value);
+
 private slots:
-    void on_lineEdit_textChanged(const QString &arg1);
+
+    void on_buttonBox_accepted();
 
 private:
     Ui::modifyfloorwindow *ui;

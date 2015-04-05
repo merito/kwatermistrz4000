@@ -1,39 +1,18 @@
 #include "modifyfloorwindow.h"
 #include "ui_modifyfloorwindow.h"
 
-modifyfloorwindow::modifyfloorwindow(QWidget *parent) :
+modifyfloorwindow::modifyfloorwindow(int number, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::modifyfloorwindow)
 {
     ui->setupUi(this);
     formLayout=findChild<QFormLayout *>("formLayout_2");
-    labelsNames=NULL;
-    labelsPlaces=NULL;
-    lineEditsNames=NULL;
-    lineEditsPlaces=NULL;
-}
 
-modifyfloorwindow::~modifyfloorwindow()
-{
-    delete ui;
-}
+    QString title = QString("Szczegóły pokoi na piętrze %1").
+            arg(Hotel::getInstance().getFloors()->last().getName());
+    setWindowTitle(title);
 
-void modifyfloorwindow::on_lineEdit_textChanged(const QString &arg1)
-{
-    this->rooms = arg1.toInt();
-
-    if(labelsNames){
-        delete[] labelsNames;
-    }
-    if(labelsPlaces){
-        delete[] labelsPlaces;
-    }
-    if(lineEditsNames){
-        delete[] lineEditsNames;
-    }
-    if(lineEditsPlaces){
-        delete[] lineEditsPlaces;
-    }
+    this->rooms = Hotel::getInstance().getFloorsNumber();
 
     labelsNames = new QLabel[this->rooms];
     labelsPlaces = new QLabel[this->rooms];
@@ -50,3 +29,29 @@ void modifyfloorwindow::on_lineEdit_textChanged(const QString &arg1)
         formLayout->addRow(&labelsPlaces[i], &lineEditsPlaces[i]);
     }
 }
+
+modifyfloorwindow::~modifyfloorwindow()
+{
+    delete ui;
+}
+
+void modifyfloorwindow::on_buttonBox_accepted()
+{
+    for(int i=0;i<this->getRooms();i++){
+        Room temp;
+        temp.setName(lineEditsNames[i].text());
+        temp.setFreePlaces(lineEditsPlaces[i].text().toInt());
+        temp.setOccupiedPlaces(0);
+        Hotel::getInstance().getFloors()->last().getRooms().append(temp);
+    }
+}
+int modifyfloorwindow::getRooms() const
+{
+    return rooms;
+}
+
+void modifyfloorwindow::setRooms(int value)
+{
+    rooms = value;
+}
+

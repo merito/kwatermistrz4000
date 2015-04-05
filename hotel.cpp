@@ -1,5 +1,10 @@
 #include "hotel.h"
 
+Hotel& Hotel::getInstance(){
+    static Hotel instance;
+    return instance;
+}
+
 Hotel::Hotel()
 {
 
@@ -27,6 +32,12 @@ void Hotel::setName(const QString &value)
 {
     name = value;
 }
+QList<Floor> *Hotel::getFloors()
+{
+    return &floors;
+}
+
+
 
 
 

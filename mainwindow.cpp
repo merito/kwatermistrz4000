@@ -15,6 +15,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNowy_triggered()
 {
-    mhWindow = new ModifyHotelWindow(this->hotel);
+    mhWindow = new ModifyHotelWindow();
     mhWindow->show();
+
+    drawContent();
+}
+
+void MainWindow::drawContent()
+{
+    QString windowTitle = QString("Kwatermistrz4000 - Ośrodek %1").
+            arg(Hotel::getInstance().getName());
+    setWindowTitle(windowTitle);
+
+    QList<Floor>::iterator floorIterator;
+
+    for(floorIterator=Hotel::getInstance().getFloors()->begin();
+        floorIterator!=Hotel::getInstance().getFloors()->end();
+        ++floorIterator){
+        QString floorTitle = QString("Piętro %1").arg(
+                    (*floorIterator).getName());
+    }
 }

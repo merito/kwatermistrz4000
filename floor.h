@@ -9,6 +9,15 @@ class Floor
 public:
     Floor();
     ~Floor();
+    QString getName() const;
+    void setName(const QString &value);
+
+    int getRoomsNumber() const;
+    void setRoomsNumber(int value);
+
+    QList<Room> getRooms() const;
+    void setRooms(const QList<Room> &value);
+
 private:
     QString name;
     int roomsNumber;

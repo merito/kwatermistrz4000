@@ -1,12 +1,11 @@
 #include "modifyhotelwindow.h"
 #include "ui_modifyhotelwindow.h"
 
-ModifyHotelWindow::ModifyHotelWindow(Hotel *hotel, QWidget *parent) :
+ModifyHotelWindow::ModifyHotelWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModifyHotelWindow)
 {
     ui->setupUi(this);
-    this->hotel=hotel;
     formLayout=findChild<QFormLayout *>("formLayout");
     labelsNames = NULL;
     labelsRooms = NULL;
@@ -21,12 +20,16 @@ ModifyHotelWindow::~ModifyHotelWindow()
 
 void ModifyHotelWindow::on_buttonBox_accepted()
 {
-    this->hotel->setName(this->name);
-    this->hotel->setFloorsNumber(this->floors);
+    Hotel::getInstance().setName(this->name);
+    Hotel::getInstance().setFloorsNumber(this->floors);
 
+    Floor temp;
     for(int i=0;i<this->floors;i++){
-        mfWindow = new modifyfloorwindow();
-        mfWindow->show();
+        temp.setName(lineEditsNames[i].text());
+        temp.setRoomsNumber(lineEditsRooms->text().toInt());
+        Hotel::getInstance().getFloors()->append(temp);
+        mfWindow = new modifyfloorwindow(i);
+        mfWindow->exec();
     }
 }
 

@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
+#include <QList>
+#include <iterator>
 #include "modifyhotelwindow.h"
 #include "hotel.h"
 
@@ -23,7 +26,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     ModifyHotelWindow *mhWindow;
-    Hotel *hotel;
+    QList<QLabel> floorLabels;
+    void drawContent();
 };
 
 #endif // MAINWINDOW_H
