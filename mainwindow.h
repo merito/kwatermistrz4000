@@ -5,6 +5,9 @@
 #include <QLabel>
 #include <QList>
 #include <iterator>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
 #include "modifyhotelwindow.h"
 #include "hotel.h"
 
@@ -23,11 +26,15 @@ public:
 private slots:
     void on_actionNowy_triggered();
 
+    void on_actionWczyt_dom_hotel_triggered();
+
 private:
     Ui::MainWindow *ui;
     ModifyHotelWindow *mhWindow;
     QList<QLabel> floorLabels;
     void drawContent();
+    QVBoxLayout *mainLayout;
+
 };
 
 #endif // MAINWINDOW_H

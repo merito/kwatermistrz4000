@@ -18,14 +18,14 @@ void Room::setName(const QString &value)
 {
     name = value;
 }
-int Room::getFreePlaces() const
+int Room::getPlaces() const
 {
-    return freePlaces;
+    return places;
 }
 
-void Room::setFreePlaces(int value)
+void Room::setPlaces(int value)
 {
-    freePlaces = value;
+    places = value;
 }
 int Room::getOccupiedPlaces() const
 {

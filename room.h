@@ -16,8 +16,8 @@ public:
     QString getName() const;
     void setName(const QString &value);
 
-    int getFreePlaces() const;
-    void setFreePlaces(int value);
+    int getPlaces() const;
+    void setPlaces(int value);
 
     int getOccupiedPlaces() const;
     void setOccupiedPlaces(int value);
@@ -30,7 +30,7 @@ public:
 
 private:
     QString name;
-    int freePlaces;
+    int places;
     int occupiedPlaces;
     Person* keyOwner;
     QList<KeyState> keys;

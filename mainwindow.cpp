@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    mainLayout = findChild<QVBoxLayout *>("verticalLayout");
 }
 
 MainWindow::~MainWindow()
@@ -16,7 +17,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNowy_triggered()
 {
     mhWindow = new ModifyHotelWindow();
-    mhWindow->show();
+    mhWindow->exec();
 
     drawContent();
 }
@@ -34,5 +35,43 @@ void MainWindow::drawContent()
         ++floorIterator){
         QString floorTitle = QString("Piętro %1").arg(
                     (*floorIterator).getName());
+        mainLayout->addWidget(new QLabel(floorTitle));
+        QHBoxLayout *floorLayout = new QHBoxLayout();
+        mainLayout->addLayout(floorLayout);
+
+        QList<Room>::iterator roomIterator;
+        for(roomIterator=(*floorIterator).getRooms()->begin();
+            roomIterator!=(*floorIterator).getRooms()->end();
+            ++roomIterator){
+                QPushButton roomButton;
+                QString buttonLabel = QString("%1 %2/%3").arg(
+                            (*roomIterator).getName()).arg(
+                            (*roomIterator).getOccupiedPlaces()).arg(
+                            (*roomIterator).getPlaces());
+                floorLayout->addWidget(new QPushButton(buttonLabel));
+        }
     }
+}
+
+void MainWindow::on_actionWczyt_dom_hotel_triggered()
+{
+    int testFloors = 10;
+    int roomsParter = 2;
+    Hotel::getInstance().setName("Testowy");
+    Hotel::getInstance().setFloorsNumber(testFloors);
+    for(int i=0;i<testFloors;i++){
+        Floor tempFloor;
+        tempFloor.setName(QString("Piętro %1").arg(i+1));
+        tempFloor.setRoomsNumber(roomsParter);
+        for(int j=0;j<roomsParter;j++){
+            Room tempRoom;
+            tempRoom.setName(QString("Zbiorówka %1").arg(j+i+2));
+            tempRoom.setPlaces(j+3);
+            tempRoom.setOccupiedPlaces(0);
+            tempFloor.getRooms()->append(tempRoom);
+        }
+        Hotel::getInstance().getFloors()->append(tempFloor);
+    }
+
+    drawContent();
 }

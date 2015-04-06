@@ -27,16 +27,7 @@ void Floor::setRoomsNumber(int value)
 {
     roomsNumber = value;
 }
-QList<Room> Floor::getRooms() const
+QList<Room> *Floor::getRooms()
 {
-    return rooms;
+    return &rooms;
 }
-
-void Floor::setRooms(const QList<Room> &value)
-{
-    rooms = value;
-}
-
-
-
-

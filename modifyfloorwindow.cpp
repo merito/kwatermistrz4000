@@ -40,9 +40,9 @@ void modifyfloorwindow::on_buttonBox_accepted()
     for(int i=0;i<this->getRooms();i++){
         Room temp;
         temp.setName(lineEditsNames[i].text());
-        temp.setFreePlaces(lineEditsPlaces[i].text().toInt());
+        temp.setPlaces(lineEditsPlaces[i].text().toInt());
         temp.setOccupiedPlaces(0);
-        Hotel::getInstance().getFloors()->last().getRooms().append(temp);
+        Hotel::getInstance().getFloors()->last().getRooms()->append(temp);
     }
 }
 int modifyfloorwindow::getRooms() const

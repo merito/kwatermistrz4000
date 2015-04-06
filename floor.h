@@ -15,9 +15,7 @@ public:
     int getRoomsNumber() const;
     void setRoomsNumber(int value);
 
-    QList<Room> getRooms() const;
-    void setRooms(const QList<Room> &value);
-
+    QList<Room>* getRooms();
 private:
     QString name;
     int roomsNumber;

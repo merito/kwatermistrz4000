@@ -14,17 +14,11 @@
    <string>Kwatermistrz4000</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>731</width>
-      <height>471</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout"/>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout"/>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -53,8 +47,15 @@
     <addaction name="actionSzukaj"/>
     <addaction name="actionModyfikuj_o_rodek"/>
    </widget>
+   <widget class="QMenu" name="menuDebug">
+    <property name="title">
+     <string>Debug</string>
+    </property>
+    <addaction name="actionWczyt_dom_hotel"/>
+   </widget>
    <addaction name="menuPlik"/>
    <addaction name="menuEdycja"/>
+   <addaction name="menuDebug"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -69,15 +70,24 @@
    <property name="text">
     <string>Nowy</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="actionOtw_rz">
    <property name="text">
     <string>Otwórz</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionZapisz">
    <property name="text">
     <string>Zapisz</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionZapisz_jako">
@@ -89,15 +99,29 @@
    <property name="text">
     <string>Zakończ</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
   <action name="actionSzukaj">
    <property name="text">
     <string>Szukaj</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
   </action>
   <action name="actionModyfikuj_o_rodek">
    <property name="text">
     <string>Modyfikuj ośrodek</string>
+   </property>
+  </action>
+  <action name="actionWczyt_dom_hotel">
+   <property name="text">
+    <string>Wczyt. dom. hotel</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+K</string>
    </property>
   </action>
  </widget>
