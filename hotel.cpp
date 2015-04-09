@@ -5,6 +5,13 @@ Hotel& Hotel::getInstance(){
     return instance;
 }
 
+void Hotel::clearHotel()
+{
+    this->floors.clear();
+    this->name="";
+    this->floorsNumber=NULL;
+}
+
 Hotel::Hotel()
 {
 

@@ -8,6 +8,8 @@ class Hotel
 {
 public:
     static Hotel& getInstance();
+    void clearHotel();
+
     int getFloorsNumber() const;
     void setFloorsNumber(int value);
 

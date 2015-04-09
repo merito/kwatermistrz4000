@@ -34,7 +34,6 @@ private:
     QList<QLabel> floorLabels;
     void drawContent();
     QVBoxLayout *mainLayout;
-
 };
 
 #endif // MAINWINDOW_H

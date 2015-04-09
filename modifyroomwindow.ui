@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>modifyfloorwindow</class>
- <widget class="QDialog" name="modifyfloorwindow">
+ <class>ModifyRoomWindow</class>
+ <widget class="QDialog" name="ModifyRoomWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>340</width>
-    <height>53</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QFormLayout" name="formLayout_2"/>
+    <layout class="QFormLayout" name="formLayout"/>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
@@ -34,7 +34,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>modifyfloorwindow</receiver>
+   <receiver>ModifyRoomWindow</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -50,7 +50,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>modifyfloorwindow</receiver>
+   <receiver>ModifyRoomWindow</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

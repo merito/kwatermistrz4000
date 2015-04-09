@@ -6,13 +6,15 @@ modifyfloorwindow::modifyfloorwindow(int number, QWidget *parent) :
     ui(new Ui::modifyfloorwindow)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":resources/icon.png"));
+
     formLayout=findChild<QFormLayout *>("formLayout_2");
 
     QString title = QString("Szczegóły pokoi na piętrze %1").
             arg(Hotel::getInstance().getFloors()->last().getName());
     setWindowTitle(title);
 
-    this->rooms = Hotel::getInstance().getFloorsNumber();
+    this->rooms = Hotel::getInstance().getFloors()->last().getRoomsNumber();
 
     labelsNames = new QLabel[this->rooms];
     labelsPlaces = new QLabel[this->rooms];

@@ -5,6 +5,10 @@
 
 #include <QString>
 #include <QList>
+#include <QPushButton>
+#include <QFormLayout>
+#include <QLineEdit>
+#include "modifyroomwindow.h"
 
 enum class KeyState { NO_KEY, HOTEL_OWNED, ON_DESK, STUFF, GUEST, LOST };
 
@@ -28,6 +32,11 @@ public:
     QList<Person> getGuests() const;
     void setGuests(const QList<Person> &value);
 
+    QPushButton *getButton() const;
+    void setButton(QPushButton *value);
+
+public slots:
+    void modifyRoom();
 private:
     QString name;
     int places;
@@ -35,6 +44,8 @@ private:
     Person* keyOwner;
     QList<KeyState> keys;
     QList<Person> guests;
+    QPushButton *button;
+    ModifyRoomWindow *mrWindow;
 };
 
 #endif // ROOM_H

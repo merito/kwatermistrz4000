@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     mainLayout = findChild<QVBoxLayout *>("verticalLayout");
+    setWindowIcon(QIcon(":resources/icon.png"));
 }
 
 MainWindow::~MainWindow()
@@ -16,6 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNowy_triggered()
 {
+    Hotel::getInstance().clearHotel();
     mhWindow = new ModifyHotelWindow();
     mhWindow->exec();
 
@@ -33,6 +35,7 @@ void MainWindow::drawContent()
     for(floorIterator=Hotel::getInstance().getFloors()->begin();
         floorIterator!=Hotel::getInstance().getFloors()->end();
         ++floorIterator){
+
         QString floorTitle = QString("Piętro %1").arg(
                     (*floorIterator).getName());
         mainLayout->addWidget(new QLabel(floorTitle));
@@ -43,18 +46,22 @@ void MainWindow::drawContent()
         for(roomIterator=(*floorIterator).getRooms()->begin();
             roomIterator!=(*floorIterator).getRooms()->end();
             ++roomIterator){
-                QPushButton roomButton;
                 QString buttonLabel = QString("%1 %2/%3").arg(
                             (*roomIterator).getName()).arg(
                             (*roomIterator).getOccupiedPlaces()).arg(
                             (*roomIterator).getPlaces());
-                floorLayout->addWidget(new QPushButton(buttonLabel));
+                (*roomIterator).getButton()->setText(buttonLabel);
+                floorLayout->addWidget( (*roomIterator).getButton() );
         }
     }
+
+
+
 }
 
 void MainWindow::on_actionWczyt_dom_hotel_triggered()
 {
+    Hotel::getInstance().clearHotel();
     int testFloors = 10;
     int roomsParter = 2;
     Hotel::getInstance().setName("Testowy");
@@ -64,11 +71,11 @@ void MainWindow::on_actionWczyt_dom_hotel_triggered()
         tempFloor.setName(QString("Piętro %1").arg(i+1));
         tempFloor.setRoomsNumber(roomsParter);
         for(int j=0;j<roomsParter;j++){
-            Room tempRoom;
-            tempRoom.setName(QString("Zbiorówka %1").arg(j+i+2));
-            tempRoom.setPlaces(j+3);
-            tempRoom.setOccupiedPlaces(0);
-            tempFloor.getRooms()->append(tempRoom);
+            Room *tempRoom = new Room();
+            tempRoom->setName(QString("Zbiorówka %1").arg(j+i+2));
+            tempRoom->setPlaces(j+3);
+            tempRoom->setOccupiedPlaces(0);
+            tempFloor.getRooms()->append(*tempRoom);
         }
         Hotel::getInstance().getFloors()->append(tempFloor);
     }

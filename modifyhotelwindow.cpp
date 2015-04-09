@@ -6,6 +6,8 @@ ModifyHotelWindow::ModifyHotelWindow(QWidget *parent) :
     ui(new Ui::ModifyHotelWindow)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":resources/icon.png"));
+
     formLayout=findChild<QFormLayout *>("formLayout");
     labelsNames = NULL;
     labelsRooms = NULL;
