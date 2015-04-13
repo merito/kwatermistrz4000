@@ -11,10 +11,10 @@ modifyfloorwindow::modifyfloorwindow(int number, QWidget *parent) :
     formLayout=findChild<QFormLayout *>("formLayout_2");
 
     QString title = QString("Szczegóły pokoi na piętrze %1").
-            arg(Hotel::getInstance().getFloors()->last().getName());
+            arg(Hotel::getInstance().getFloors()->last()->getName());
     setWindowTitle(title);
 
-    this->rooms = Hotel::getInstance().getFloors()->last().getRoomsNumber();
+    this->rooms = Hotel::getInstance().getFloors()->last()->getRoomsNumber();
 
     labelsNames = new QLabel[this->rooms];
     labelsPlaces = new QLabel[this->rooms];
@@ -40,11 +40,11 @@ modifyfloorwindow::~modifyfloorwindow()
 void modifyfloorwindow::on_buttonBox_accepted()
 {
     for(int i=0;i<this->getRooms();i++){
-        Room temp;
-        temp.setName(lineEditsNames[i].text());
-        temp.setPlaces(lineEditsPlaces[i].text().toInt());
-        temp.setOccupiedPlaces(0);
-        Hotel::getInstance().getFloors()->last().getRooms()->append(temp);
+        Room *temp = new Room();
+        temp->setName(lineEditsNames[i].text());
+        temp->setPlaces(lineEditsPlaces[i].text().toInt());
+        temp->setOccupiedPlaces(0);
+        Hotel::getInstance().getFloors()->last()->getRooms()->append(temp);
     }
 }
 int modifyfloorwindow::getRooms() const

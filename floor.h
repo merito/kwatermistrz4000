@@ -15,11 +15,11 @@ public:
     int getRoomsNumber() const;
     void setRoomsNumber(int value);
 
-    QList<Room>* getRooms();
+    QList<Room*>* getRooms();
 private:
     QString name;
     int roomsNumber;
-    QList<Room> rooms;
+    QList<Room*> rooms;
 };
 
 #endif // FLOOR_H

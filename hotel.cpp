@@ -39,7 +39,7 @@ void Hotel::setName(const QString &value)
 {
     name = value;
 }
-QList<Floor> *Hotel::getFloors()
+QList<Floor*> *Hotel::getFloors()
 {
     return &floors;
 }

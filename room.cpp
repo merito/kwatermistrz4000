@@ -3,7 +3,7 @@
 Room::Room()
 {
     this->button = new QPushButton();
-    //QObject(this, SIGNAL(clicked()), this, SLOT(modifyRoom()) );
+    QObject::connect(this->getButton(), SIGNAL(clicked()), this, SLOT(modifyRoom()) );
 }
 
 Room::~Room()
@@ -47,12 +47,12 @@ void Room::setKeyOwner(Person *value)
 {
     keyOwner = value;
 }
-QList<Person> Room::getGuests() const
+QList<Person*> Room::getGuests() const
 {
     return guests;
 }
 
-void Room::setGuests(const QList<Person> &value)
+void Room::setGuests(const QList<Person *> &value)
 {
     guests = value;
 }
@@ -67,17 +67,31 @@ void Room::modifyRoom()
 
     QLineEdit *lineEdits = new QLineEdit[this->getPlaces()];
 
-    QList<Person>::iterator it;
+    QList<Person*>::iterator it;
     it=this->getGuests().begin();
 
     for(int i=0;i<this->getPlaces();i++){
-        if(it!=this->getGuests().end()){
-            lineEdits[i].setText((*it).getName());
+        if(i < this->getGuests().length()){
+            lineEdits[i].setText((*it)->getName());
+            formLayout->addRow(new QLabel(QString("%1.").arg(i+1)), &lineEdits[i]);
+            it++;
+        }else{
             formLayout->addRow(new QLabel(QString("%1.").arg(i+1)), &lineEdits[i]);
         }
     }
     mrWindow->exec();
+
 }
+ModifyRoomWindow *Room::getMrWindow() const
+{
+    return mrWindow;
+}
+
+void Room::setMrWindow(ModifyRoomWindow *value)
+{
+    mrWindow = value;
+}
+
 QPushButton *Room::getButton() const
 {
     return button;

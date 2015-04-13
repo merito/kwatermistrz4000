@@ -16,7 +16,7 @@ public:
     QString getName() const;
     void setName(const QString &value);
 
-    QList<Floor>* getFloors();
+    QList<Floor *> *getFloors();
 
 private:
     Hotel();
@@ -24,7 +24,7 @@ private:
 
     QString name;
     int floorsNumber;
-    QList<Floor> floors;
+    QList<Floor *> floors;
 };
 
 #endif // HOTEL_H

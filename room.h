@@ -12,8 +12,9 @@
 
 enum class KeyState { NO_KEY, HOTEL_OWNED, ON_DESK, STUFF, GUEST, LOST };
 
-class Room
+class Room : public QObject
 {
+Q_OBJECT
 public:
     Room();
     ~Room();
@@ -29,11 +30,14 @@ public:
     Person *getKeyOwner() const;
     void setKeyOwner(Person *value);
 
-    QList<Person> getGuests() const;
-    void setGuests(const QList<Person> &value);
+    QList<Person *> getGuests() const;
+    void setGuests(const QList<Person *> &value);
 
     QPushButton *getButton() const;
     void setButton(QPushButton *value);
+
+    ModifyRoomWindow *getMrWindow() const;
+    void setMrWindow(ModifyRoomWindow *value);
 
 public slots:
     void modifyRoom();
@@ -43,7 +47,7 @@ private:
     int occupiedPlaces;
     Person* keyOwner;
     QList<KeyState> keys;
-    QList<Person> guests;
+    QList<Person*> guests;
     QPushButton *button;
     ModifyRoomWindow *mrWindow;
 };
