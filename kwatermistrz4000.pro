@@ -18,8 +18,6 @@ SOURCES += main.cpp\
     modifyhotelwindow.cpp \
     person.cpp \
     room.cpp \
-    roombutton.cpp \
-    floorbutton.cpp \
     floor.cpp \
     hotel.cpp \
     modifyfloorwindow.cpp \
@@ -29,8 +27,6 @@ HEADERS  += mainwindow.h \
     modifyhotelwindow.h \
     person.h \
     room.h \
-    roombutton.h \
-    floorbutton.h \
     floor.h \
     hotel.h \
     modifyfloorwindow.h \
