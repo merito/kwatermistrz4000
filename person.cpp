@@ -5,6 +5,11 @@ Person::Person()
 
 }
 
+Person::Person(QString name)
+{
+    this->setName(name);
+}
+
 Person::~Person()
 {
 

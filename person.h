@@ -7,6 +7,7 @@ class Person
 {
 public:
     Person();
+    Person(QString name);
     ~Person();
     QString getName() const;
     void setName(const QString &value);

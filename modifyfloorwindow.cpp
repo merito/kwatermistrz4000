@@ -43,7 +43,6 @@ void modifyfloorwindow::on_buttonBox_accepted()
         Room *temp = new Room();
         temp->setName(lineEditsNames[i].text());
         temp->setPlaces(lineEditsPlaces[i].text().toInt());
-        temp->setOccupiedPlaces(0);
         Hotel::getInstance().getFloors()->last()->getRooms()->append(temp);
     }
 }

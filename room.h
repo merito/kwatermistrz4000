@@ -25,13 +25,13 @@ public:
     void setPlaces(int value);
 
     int getOccupiedPlaces() const;
-    void setOccupiedPlaces(int value);
 
     Person *getKeyOwner() const;
     void setKeyOwner(Person *value);
 
-    QList<Person *> getGuests() const;
+    QList<Person *> getGuests();
     void setGuests(const QList<Person *> &value);
+    void appendGuest(Person *guest);
 
     QPushButton *getButton() const;
     void setButton(QPushButton *value);
@@ -41,10 +41,10 @@ public:
 
 public slots:
     void modifyRoom();
+    void saveChanges();
 private:
     QString name;
     int places;
-    int occupiedPlaces;
     Person* keyOwner;
     QList<KeyState> keys;
     QList<Person*> guests;

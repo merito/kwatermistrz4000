@@ -12,3 +12,13 @@ ModifyRoomWindow::~ModifyRoomWindow()
 {
     delete ui;
 }
+QLineEdit *ModifyRoomWindow::getLineEdits()
+{
+    return lineEdits;
+}
+
+void ModifyRoomWindow::setLineEdits(QLineEdit *value)
+{
+    lineEdits = value;
+}
+

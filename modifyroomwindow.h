@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QLabel>
+#include <QLineEdit>
 
 namespace Ui {
 class ModifyRoomWindow;
@@ -16,8 +17,12 @@ public:
     explicit ModifyRoomWindow(QWidget *parent = 0);
     ~ModifyRoomWindow();
 
+    QLineEdit *getLineEdits();
+    void setLineEdits(QLineEdit *value);
+
 private:
     Ui::ModifyRoomWindow *ui;
+    QLineEdit *lineEdits;
 };
 
 #endif // MODIFYROOMWINDOW_H
