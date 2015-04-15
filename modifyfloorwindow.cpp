@@ -1,7 +1,7 @@
 #include "modifyfloorwindow.h"
 #include "ui_modifyfloorwindow.h"
 
-modifyfloorwindow::modifyfloorwindow(int number, QWidget *parent) :
+modifyfloorwindow::modifyfloorwindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::modifyfloorwindow)
 {
@@ -39,8 +39,9 @@ modifyfloorwindow::~modifyfloorwindow()
 
 void modifyfloorwindow::on_buttonBox_accepted()
 {
+    Room *temp;
     for(int i=0;i<this->getRooms();i++){
-        Room *temp = new Room();
+        temp = new Room();
         temp->setName(lineEditsNames[i].text());
         temp->setPlaces(lineEditsPlaces[i].text().toInt());
         Hotel::getInstance().getFloors()->last()->getRooms()->append(temp);

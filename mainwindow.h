@@ -15,6 +15,7 @@
 #include "hotel.h"
 #include "floor.h"
 #include "room.h"
+#include "searchwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -43,10 +44,16 @@ private slots:
     void on_actionZako_cz_triggered();
 
     void on_actionOtw_rz_triggered();
+    void on_actionSzukaj_triggered();
+
+public slots:
+    void updateContent();
+    void lookForName(QString name);
 
 private:
     Ui::MainWindow *ui;
     ModifyHotelWindow *mhWindow;
+    searchWindow *searchW;
     QList<QLabel> floorLabels;
     void drawContent();
     QVBoxLayout *mainLayout;

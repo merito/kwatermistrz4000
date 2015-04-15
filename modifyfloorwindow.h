@@ -17,7 +17,7 @@ class modifyfloorwindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit modifyfloorwindow(int number, QWidget *parent = 0);
+    explicit modifyfloorwindow(QWidget *parent = 0);
     ~modifyfloorwindow();
 
     int getRooms() const;

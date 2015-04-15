@@ -72,14 +72,10 @@ void Room::modifyRoom()
 
     mrWindow->setLineEdits(new QLineEdit[this->getPlaces()]);
 
-    QList<Person*>::iterator it;
-    it=this->getGuests().begin();
-
     for(int i=0;i<this->getPlaces();i++){
         if(i < this->getGuests().length()){
-            mrWindow->getLineEdits()[i].setText((*it)->getName());
+            mrWindow->getLineEdits()[i].setText(this->getGuests()[i]->getName());
             formLayout->addRow(new QLabel(QString("%1.").arg(i+1)), &(mrWindow->getLineEdits()[i]));
-            it++;
         }else{
             formLayout->addRow(new QLabel(QString("%1.").arg(i+1)), &(mrWindow->getLineEdits()[i]));
         }
@@ -87,6 +83,29 @@ void Room::modifyRoom()
 
     }
     mrWindow->exec();
+
+    this->button->setText(QString("%1 %2/%3").arg(
+                              this->getName()).arg(
+                              this->getOccupiedPlaces()).arg(
+                              this->getPlaces()));
+
+    QColor colGreen(Qt::green);
+    QColor colYellow(Qt::yellow);
+    QColor colRed(Qt::red);
+
+    double ratio = (double)this->getOccupiedPlaces()/this->getPlaces();
+
+    if( ratio < 0.4 ){
+        QString qss = QString("background-color: %1").arg(colGreen.name());
+        this->getButton()->setStyleSheet(qss);
+    }else
+    if( ratio < 0.7){
+        QString qss = QString("background-color: %1").arg(colYellow.name());
+        this->getButton()->setStyleSheet(qss);
+    }else{
+        QString qss = QString("background-color: %1").arg(colRed.name());
+        this->getButton()->setStyleSheet(qss);
+    }
 }
 
 void Room::saveChanges()
@@ -98,7 +117,9 @@ void Room::saveChanges()
     this->guests.clear(); //delete
 
     for(int i=0;i<this->places;++i){
-        this->guests.append(new Person(this->getMrWindow()->getLineEdits()[i].text()));
+        if(this->getMrWindow()->getLineEdits()[i].text() != ""){
+            this->guests.append(new Person(this->getMrWindow()->getLineEdits()[i].text()));
+        }
     }
 }
 

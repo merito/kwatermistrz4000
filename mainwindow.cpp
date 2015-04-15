@@ -24,13 +24,32 @@ void MainWindow::on_actionNowy_triggered()
     drawContent();
 }
 
+void clearLayout(QLayout *layout){
+    QLayoutItem *item;
+    while(item = layout->takeAt(0)){
+        if(item->layout()){
+            clearLayout(item->layout());
+            delete item->layout();
+        }
+        if(item->widget()){
+            delete item->widget();
+        }
+        //delete item;
+    }
+}
+
 void MainWindow::drawContent()
 {
+    clearLayout(mainLayout);
+
     QString windowTitle = QString("Kwatermistrz4000 - Ośrodek %1").
             arg(Hotel::getInstance().getName());
     setWindowTitle(windowTitle);
 
     QList<Floor*>::iterator floorIterator;
+
+    Hotel* tempHotel = &(Hotel::getInstance());
+    tempHotel->getInstance();
 
     for(floorIterator=Hotel::getInstance().getFloors()->begin();
         floorIterator!=Hotel::getInstance().getFloors()->end();
@@ -51,6 +70,25 @@ void MainWindow::drawContent()
                         (*roomIterator)->getOccupiedPlaces()).arg(
                         (*roomIterator)->getPlaces());
             (*roomIterator)->getButton()->setText(buttonLabel);
+
+            QColor colGreen(Qt::green);
+            QColor colYellow(Qt::yellow);
+            QColor colRed(Qt::red);
+
+            double ratio = (double)(*roomIterator)->getOccupiedPlaces()/(*roomIterator)->getPlaces();
+
+            if( ratio < 0.4 ){
+                QString qss = QString("background-color: %1").arg(colGreen.name());
+                (*roomIterator)->getButton()->setStyleSheet(qss);
+            }else
+            if( ratio < 0.7){
+                QString qss = QString("background-color: %1").arg(colYellow.name());
+                (*roomIterator)->getButton()->setStyleSheet(qss);
+            }else{
+                QString qss = QString("background-color: %1").arg(colRed.name());
+                (*roomIterator)->getButton()->setStyleSheet(qss);
+            }
+
             floorLayout->addWidget( (*roomIterator)->getButton() );
         }
     }
@@ -196,4 +234,46 @@ void MainWindow::on_actionOtw_rz_triggered()
     delete file;
 
     drawContent();
+}
+
+void MainWindow::updateContent()
+{
+    drawContent();
+}
+
+void MainWindow::on_actionSzukaj_triggered()
+{
+    searchW = new searchWindow();
+    QObject::connect(this->searchW, SIGNAL(searchName(QString)), this, SLOT(lookForName(QString)) );
+    searchW->exec();
+
+}
+
+void MainWindow::lookForName(QString name)
+{
+    QString numbers;
+    bool multi = false;
+    for(int i=0;i<Hotel::getInstance().getFloorsNumber();++i){
+        for(int j=0;j<Hotel::getInstance().getFloors()->at(i)->getRoomsNumber();++j){
+            for(int k=0;k<Hotel::getInstance().getFloors()->at(i)->getRooms()->at(j)->getOccupiedPlaces();++k){
+                if(Hotel::getInstance().getFloors()->at(i)->getRooms()->at(j)->getGuests().at(k)->getName().contains(&name)){
+                    if( numbers.length() != 0 ){
+                        numbers.append(", ");
+                        multi = true;
+                    }
+                    numbers.append(Hotel::getInstance().getFloors()->at(i)->getRooms()->at(j)->getName());
+                }
+            }
+        }
+    }
+
+    QStatusBar *statusBar = findChild<QStatusBar *>("statusBar");
+    if(numbers.length() == 0){
+        statusBar->showMessage("Nie znaleziono osoby");
+    }else
+    if(multi){
+        statusBar->showMessage("Znalziono osoby w pokojach " + numbers);
+    }else{
+        statusBar->showMessage("Znaleziono osobę w pokoju " + numbers);
+    }
 }

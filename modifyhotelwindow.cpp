@@ -25,12 +25,13 @@ void ModifyHotelWindow::on_buttonBox_accepted()
     Hotel::getInstance().setName(this->name);
     Hotel::getInstance().setFloorsNumber(this->floors);
 
-    Floor *temp = new Floor();
+    Floor *temp;
     for(int i=0;i<this->floors;i++){
+        temp = new Floor();
         temp->setName(lineEditsNames[i].text());
-        temp->setRoomsNumber(lineEditsRooms->text().toInt());
+        temp->setRoomsNumber(lineEditsRooms[i].text().toInt());
         Hotel::getInstance().getFloors()->append(temp);
-        mfWindow = new modifyfloorwindow(i);
+        mfWindow = new modifyfloorwindow();
         mfWindow->exec();
     }
 }

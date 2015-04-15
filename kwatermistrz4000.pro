@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     floor.cpp \
     hotel.cpp \
     modifyfloorwindow.cpp \
-    modifyroomwindow.cpp
+    modifyroomwindow.cpp \
+    searchwindow.cpp
 
 HEADERS  += mainwindow.h \
     modifyhotelwindow.h \
@@ -30,12 +31,14 @@ HEADERS  += mainwindow.h \
     floor.h \
     hotel.h \
     modifyfloorwindow.h \
-    modifyroomwindow.h
+    modifyroomwindow.h \
+    searchwindow.h
 
 FORMS    += mainwindow.ui \
     modifyhotelwindow.ui \
     modifyfloorwindow.ui \
-    modifyroomwindow.ui
+    modifyroomwindow.ui \
+    searchwindow.ui
 
 RESOURCES += \
     icons.qrc

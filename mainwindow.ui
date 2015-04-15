@@ -16,7 +16,30 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout"/>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTextBrowser" name="textBrowser">
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Droid Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Witaj w programie do kwaterowania na Rajdzie Elektryka &lt;span style=&quot; font-weight:600;&quot;&gt;kwatermistrz4000&lt;/span&gt;!&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aby uniknąć problemów podczas korzystania z programu zapoznaj się z poniższą instrukcją.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Zanim przystąpisz do kwaterowania musisz stworzyć lub wczytać zapisany wcześniej ośrodek. Aby to zrobić wybierz z menu pozycję Plik -&amp;gt; Nowy bądź wciśnij Ctrl + N aby stworzyć nowy ośrodek lub Plik -&amp;gt; Otwórz (Ctrl + O) aby wczytać ośrodek wcześniej zapisany. Tworząc nowy ośrodek przejdź przez kreator podając informacje o ośrodku, jego poszczególnych piętrach i pokojach. Jeśli dobrniesz do końca Twoim oczom ukaże się główne okno programu z przyciskami odpowiadającymi pokojom. Aby modyfikować listę osób w pokoju kliknij kolorowy przycisk tego pokoju.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ponieważ program jest w wersji rozwojowej &lt;span style=&quot; font-weight:600;&quot;&gt;pamiętaj aby często zapisywać zmiany&lt;/span&gt; (Plik -&amp;gt; Zapisz albo &lt;span style=&quot; font-weight:600;&quot;&gt;Ctrl + S&lt;/span&gt;). Dzięki temu w razie awarii będziesz mieć pod ręką listę zapisanych osób w formie którą da się odczytać również zwykłym edytorem tekstowym.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;W menu Edycja jest na razie tylko jedna funkcja - Szukaj (Ctrl + F). Po wpisaniu szukanej frazy w polu i zatwierdzeniu wynik wyszukiwania (numery pokojów) pokaże się na dole okna głównego.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Życzę przyjemnego korzystania z programu&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -45,17 +68,9 @@
      <string>Edycja</string>
     </property>
     <addaction name="actionSzukaj"/>
-    <addaction name="actionModyfikuj_o_rodek"/>
-   </widget>
-   <widget class="QMenu" name="menuDebug">
-    <property name="title">
-     <string>Debug</string>
-    </property>
-    <addaction name="actionWczyt_dom_hotel"/>
    </widget>
    <addaction name="menuPlik"/>
    <addaction name="menuEdycja"/>
-   <addaction name="menuDebug"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
